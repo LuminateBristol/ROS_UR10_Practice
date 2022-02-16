@@ -33,8 +33,8 @@ myur10_planning_execution.launch
 
 To launch the RViz window which runs the planner, we first launch the Gazebo simulation to startup the ROS nodes and topics for our simulation, then we launch the MoveIt MotionPlanner.
 ```
-roslaunch myur10sim_description myur10.launch
-roslaunch myur10_moveit_config myur10_planning_execution.launch
+$ roslaunch myur10sim_description myur10.launch
+$ roslaunch myur10_moveit_config myur10_planning_execution.launch
 ```
 
 This launches both the Gazebo simulation and the RViz planning tool. To do a quick test that all is working, 'Add' the RobotModeln and 'Add' MotionPlanning to RViz. Set two states to move between (e.g. AllZeros to Home), hit Plan, and then hit Execute. When Executing, the robot in both RViz and Gazebo should move.
@@ -54,7 +54,7 @@ In two seperate terminal windows run the following (note a launch file could be 
 ```
 $ rosrun myur10_moveit_config master_controller.py
 
-$ rosrun myur10_moveit_config_master_controller.py
+$ rosrun myur10_moveit_config cartesian_controller.py
 ```
 
 Switching back to our Gazebo and RViz windows, we will now see the robot planning and then moving to the random positions. Note that if there is no possible path due to an dd randomised x_value, the movement will be aborted.
