@@ -1,13 +1,13 @@
-# Setting up an Amazon picking challenge simulation with a UR10 robot arm in ROS / Gazebo.
+## Setting up an Amazon picking challenge simulation with a UR10 robot arm in ROS / Gazebo.
 
-## Step 1 - Install ROS, Gazebo and the Universal Robots packages
+### Step 1 - Install ROS, Gazebo and the Universal Robots packages
 
 
-## Step 2 - Build the simulation
+### Step 2 - Build the simulation
 
 Follow this tutorial: https://www.youtube.com/watch?v=ayp87SjrwPc
 
-## Step 3 - Setup MoveIt
+### Step 3 - Setup MoveIt
 
 To install MoveIt use the following with your ROS distro inserted:
 ```
@@ -39,7 +39,7 @@ roslaunch myur10_moveit_config myur10_planning_execution.launch
 
 This launches both the Gazebo simulation and the RViz planning tool. To do a quick test that all is working, 'Add' the RobotModeln and 'Add' MotionPlanning to RViz. Set two states to move between (e.g. AllZeros to Home), hit Plan, and then hit Execute. When Executing, the robot in both RViz and Gazebo should move.
 
-## Step 4 - Control the robot
+### Step 4 - Control the robot
 
 So we now want to control the robot using python node. To do so we setup a python launch file and a python ros node using rospy. This is done using the moveit package and based on the following documentation: http://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/move_group_python_interface/move_group_python_interface_tutorial.html
 
@@ -49,12 +49,12 @@ Setup the python file by creating a scripts folder under `myur10_moveit_config` 
 
 Now we can run that python file to control the robot (note there are some dependant python packages that may need installing - pip install.... etc).
 
-In two seperate terminal windows run the following:
+In two seperate terminal windows run the following (note a launch file could be built to action this from a single terminal):
 
 ```
-rosrun myur10_moveit_config master_controller.py
+$ rosrun myur10_moveit_config master_controller.py
 
-rosrun myur10_moveit_config_master_controller.py
+$ rosrun myur10_moveit_config_master_controller.py
 ```
 
 Switching back to our Gazebo and RViz windows, we will now see the robot planning and then moving to the random positions. Note that if there is no possible path due to an dd randomised x_value, the movement will be aborted.
